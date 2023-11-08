@@ -1,7 +1,10 @@
 package scenarioTest;
 
 import personnages.Gaulois;
-import villagegaulois.Etal;
+import produit.Poisson;
+import produit.Sanglier;
+import villagegauloisold.Etal;
+import villagegauloisold.IEtal;
 
 public class Scenario {
 
@@ -14,10 +17,14 @@ public class Scenario {
 		Gaulois ordralfabetix = new Gaulois("Ordralfabétix", 9);
 		Gaulois obelix = new Gaulois("Obélix", 20);
 		Gaulois asterix = new Gaulois("Astérix", 6);
-
+		IEtal[] etals = new IEtal[3];
+		Etal<Sanglier> etalSanglier = new Etal<>();
+		etals[0] = etalSanglier;
+		
+		Etal<Poisson> etalPoisson = new Etal<>();
+		etals[1] = etalPoisson;
 		Etal<Sanglier> etalSanglierObelix = new Etal<>();
 		Etal<Sanglier> etalSanglierAsterix = new Etal<>();
-		Etal<Poisson> etalPoisson = new Etal<>();
 
 		Sanglier sanglier1 = new Sanglier(2000, obelix);
 		Sanglier sanglier2 = new Sanglier(1500, obelix);
@@ -30,19 +37,19 @@ public class Scenario {
 		Poisson poisson1 = new Poisson("lundi");
 		Poisson[] poissons = { poisson1 };
 
-		village.installerVendeur(etalSanglierAsterix, asterix, sangliersAsterix, 10);
-		village.installerVendeur(etalSanglierObelix, obelix, sangliersObelix, 8);
-		village.installerVendeur(etalPoisson, ordralfabetix, poissons, 5);
-
-		System.out.println(village);
-
-		DepenseMarchand[] depense = village.acheterProduit("sanglier", 3);
-
-		for (int i = 0; i < depense.length && depense[i] != null; i++) {
-			System.out.println(depense[i]);
-		}
-
-		System.out.println(village);
+//		village.installerVendeur(etalSanglierAsterix, asterix, sangliersAsterix, 10);
+//		village.installerVendeur(etalSanglierObelix, obelix, sangliersObelix, 8);
+//		village.installerVendeur(etalPoisson, ordralfabetix, poissons, 5);
+//
+//		System.out.println(village);
+//
+//		DepenseMarchand[] depense = village.acheterProduit("sanglier", 3);
+//
+//		for (int i = 0; i < depense.length && depense[i] != null; i++) {
+//			System.out.println(depense[i]);
+//		}
+//
+//		System.out.println(village);
 
 	}
 
