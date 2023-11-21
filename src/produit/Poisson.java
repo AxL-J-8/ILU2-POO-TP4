@@ -8,9 +8,17 @@ public class Poisson extends Produit {
 	   this.dateDePeche=date;
    }
 	@Override
-	public void descriptionProduit() {
-		System.out.println("poisson pechés le "+dateDePeche);
+	public void description() {
+		System.out.println(descriptionProduit());
 
+	}
+
+	@Override
+	public String descriptionProduit() {
+		return "poisson pechés le "+dateDePeche;
+	}
+	public double calculerPrix(double prix) {
+		return prix;
 	}
 
 }

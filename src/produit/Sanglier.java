@@ -4,7 +4,7 @@ import personnages.Gaulois;
 
 public class Sanglier extends Produit {
     private Gaulois chasseur;
-    private int poids;
+    private double poids;
     
 	public Sanglier(int poids,Gaulois gaulois) {
 		super("sanglier",Unite.KILOGRAMME);
@@ -13,8 +13,17 @@ public class Sanglier extends Produit {
 	}
 
 	@Override
-	public void descriptionProduit() {
-		System.out.println("sanglier de "+poids+" "+super.getUniteP().toString()+" chassé par "+chasseur.getNom());
+	public void description(){
+		System.out.println(descriptionProduit());
 	}
+	
+	public  String descriptionProduit() {
+		return "sanglier de "+poids+" "+super.getUniteP().toString()+" chassé par "+chasseur.getNom();
+		
+	}
+	public double calculerPrix(double prix) {
+		return (poids/1000)*prix;
+	}
+
 
 }

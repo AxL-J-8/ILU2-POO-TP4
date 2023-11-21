@@ -25,6 +25,7 @@ public abstract class Produit implements IProduit {
 		return uniteP;
 	}
 
-	@Override
-	public abstract void descriptionProduit();
+	
+
+
 }

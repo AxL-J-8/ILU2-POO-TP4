@@ -8,6 +8,10 @@ public interface IProduit {
 
 	Unite getUniteP();
 
-	void descriptionProduit();
+	void description();
+	double calculerPrix(double prix);
+
+	String descriptionProduit();
+
 
 }

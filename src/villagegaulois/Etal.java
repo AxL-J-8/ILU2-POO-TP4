@@ -6,33 +6,72 @@ import produit.Produit;
 
 public class Etal<P extends IProduit> implements IEtal {
 	private Gaulois vendeur;
-	private P[] produit ;
+	private P[] produits;
 	private int nbProduit;
 	private int prix;
+
 	@Override
 	public Gaulois getVendeur() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return vendeur;
 	}
+
 	@Override
 	public double donnerPrix() {
-		// TODO Auto-generated method stub
-		return 0;
+		return prix;
 	}
+
 	@Override
 	public int contientProduit(String produit, int quantiteSouhaitee) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		int quantiteAVendre = 0;
+		if (nbProduit != 0 && this.produits[0].getNom().equals(produit)) {
+			if (nbProduit >= quantiteSouhaitee) {
+				quantiteAVendre = quantiteSouhaitee;
+			} else {
+				quantiteAVendre = nbProduit;
+			}
+		}
+		return quantiteAVendre;
 	}
+
 	@Override
-	public double acheterProduit(int quantiteSouhaitee) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double acheterProduit(int quantiteSouhaite) {
+		double prixPaye = 0;
+		for (int i = nbProduit - 1; i > nbProduit - quantiteSouhaite - 1 || i > 1; i--) {
+			prixPaye += produits[i].calculerPrix(prix);
+		}
+		if (nbProduit >= quantiteSouhaite) {
+			nbProduit -= quantiteSouhaite;
+		} else {
+			nbProduit = 0;
+		}
+		return prixPaye;
 	}
+
 	@Override
 	public String etatEtal() {
-		// TODO Auto-generated method stub
-		return null;
+
+		StringBuilder chaine = new StringBuilder(vendeur.getNom());
+		if (nbProduit > 0) {
+			chaine.append(" vend ");
+			chaine.append(nbProduit + " produits :");
+			for (int i = 0; i < nbProduit; i++) {
+				chaine.append("\n- " + (produits[i].descriptionProduit()));
+			}
+		} else {
+			chaine.append(" n'a plus rien à vendre.");
+		}
+		chaine.append("\n");
+		return chaine.toString();
+	}
+
+	public void installerVendeur(Gaulois vendeur, P[] produit, int prix) {
+		this.vendeur = vendeur;
+		this.prix = prix;
+		this.produits = produit;
+		this.nbProduit = produit.length;
+
 	}
 
 }
